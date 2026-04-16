@@ -1,6 +1,6 @@
 #NOT A VIBE CODING PROJECT.
 
-This is a Windows-only game made by a beginner first year computer science student!
+This is Windows-only game made by a beginner first year computer science student!
 Any tips, criticisms or suggestions are most welcome.
 Created in DEV-C++.
 
@@ -10,12 +10,15 @@ number generator rand() to generate a random number from 1 to 3.
 
 1. main.c contains the source code. Please do not copy it.
 
-2. Contains mp3 files named bg_music, lose, win, final_lose, final_win, tie, menu, return_1. 
+2. Contains mp3 files named bg_music, lose, win, final_lose, final_win, tie, menu, return_1. Do not remove
+these files from the game folder.
 
-3. Do not remove these files from the game folder.
-
-In the future releases, I plan to fix more bugs and a live progress bar.
+In the future releases, I plan to fix more bugs and add a two player game mode too.
 
 Thank you for playing my first game :)
+
+Version 1.1
+- Replacement of system("pause") with getch().
+- Increased console font size for better view.
 
 

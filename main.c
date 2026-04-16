@@ -3,6 +3,7 @@
 #include<time.h>
 #include<windows.h>
 #include <mmsystem.h>
+#include<conio.h>
 void window_size(int width,int height) {
 	SetConsoleTitle("Stone Paper Scissors By Reejul");
     HWND console=GetConsoleWindow();
@@ -14,16 +15,28 @@ void window_size(int width,int height) {
     style&=~WS_THICKFRAME;  
     SetWindowLong(console,GWL_STYLE,style);
 }
+void set_font_size(int size) {
+    HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize=sizeof(cfi);
+    cfi.nFont=0;
+    cfi.dwFontSize.X=0;   
+    cfi.dwFontSize.Y=size;  
+    cfi.FontFamily=FF_DONTCARE;
+    cfi.FontWeight=FW_NORMAL;
+    wcscpy(cfi.FaceName,L"Consolas");
+    SetCurrentConsoleFontEx(hConsole, FALSE, &cfi);
+}
 int main(){
 	window_size(430, 300);
+	set_font_size(24);
 	HANDLE hConsole=GetStdHandle(STD_OUTPUT_HANDLE);
 	srand(time(NULL));
 	int user,computer,round,score,rounds,score2,i;
 	char choice;
 	
 	mciSendString("open \"bg_music.mp3\" type mpegvideo alias bg_music", NULL, 0, NULL);
-
-	mciSendString("open \"win.mp3\" type mpegvideo alias win_sound",NULL,0,NULL);
+    mciSendString("open \"win.mp3\" type mpegvideo alias win_sound",NULL,0,NULL);
 	mciSendString("open \"lose.mp3\" type mpegvideo alias lose_sound",NULL,0,NULL);
 	mciSendString("open \"final_win.mp3\" type mpegvideo alias f_win",NULL,0,NULL);
 	mciSendString("open \"final_lose.mp3\" type mpegvideo alias f_lose",NULL,0,NULL);
@@ -35,15 +48,20 @@ int main(){
 	
 	printf("LOADING ");
 	SetConsoleTextAttribute(hConsole,9);
+	
 	printf("[=="); Sleep(400); printf("==="); Sleep(30); printf("=="); Sleep(30); printf("==="); 
-	Sleep(400); printf("===="); Sleep(30); printf("=="); Sleep(400); printf("==="); Sleep(500); printf("====]\n\n");
-	Sleep(1000);
+	Sleep(400); printf("===="); Sleep(30); printf("=="); Sleep(400); printf("==="); Sleep(500); 
+	printf("====]\n\n"); Sleep(1000);
+	
 	SetConsoleTextAttribute(hConsole,7);
+	
 	system("cls");
 	mciSendString("play bg_music from 0 repeat", NULL, 0, NULL);
 	Sleep(500);
+	
 	printf("Welcome to Stone Paper Scissors..\n");
 	printf("Enter the number of rounds [Max: 30]: ");
+	
 	while (1) {
     if (scanf("%d",&rounds)==1){
         if (rounds>=1&&rounds<=30) {
@@ -59,20 +77,21 @@ int main(){
         }
     } else {
         SetConsoleTextAttribute(hConsole, 12); 
-        printf("Only integers are allowed (from 1 to 30): ");
         mciSendString("stop return_1.mp3", NULL, 0, NULL);
         mciSendString("play return_1.mp3 from 0", NULL, 0, NULL);
+        printf("Only integers are allowed (from 1 to 30): ");
         while (getchar() != '\n'); 
         SetConsoleTextAttribute(hConsole, 7); 
     }
 }
+
 	mciSendString("stop menu_sound", NULL, 0, NULL);
 	mciSendString("play menu.mp3 from 0", NULL, 0, NULL);
 	
-	
 	for(round=1;round<=rounds;round++){
 	SetConsoleTextAttribute(hConsole,2);
-	system("pause");
+	printf("Press any key to continue...");
+	getch();
 	SetConsoleTextAttribute(hConsole,7);
 	mciSendString("stop menu_sound", NULL, 0, NULL);
 	mciSendString("play menu.mp3 from 0", NULL, 0, NULL);
@@ -172,11 +191,11 @@ int main(){
 	
 	system("cls");
 	
-	printf("=");Sleep(100);printf("=");Sleep(100);printf("=");Sleep(100);printf("= ");Sleep(100);
-	printf("F");Sleep(100);printf("I");Sleep(100);printf("N");Sleep(100);printf("A");Sleep(100);
-	printf("L");Sleep(100);printf(" ");Sleep(100);printf("S");Sleep(100);printf("C");Sleep(100);
-	printf("O");Sleep(100);printf("R");Sleep(100);printf("E ");Sleep(100);printf("=");Sleep(100);
-	printf("=");Sleep(100);printf("=");Sleep(100);printf("=");Sleep(100);
+	printf("=");Sleep(50);printf("=");Sleep(50);printf("=");Sleep(50);printf("= ");Sleep(50);
+	printf("F");Sleep(50);printf("I");Sleep(50);printf("N");Sleep(50);printf("A");Sleep(50);
+	printf("L");Sleep(50);printf(" ");Sleep(50);printf("S");Sleep(50);printf("C");Sleep(50);
+	printf("O");Sleep(50);printf("R");Sleep(50);printf("E ");Sleep(50);printf("=");Sleep(50);
+	printf("=");Sleep(50);printf("=");Sleep(50);printf("=");Sleep(50);
 	
 	printf("\n\n");
 	Sleep(700);
