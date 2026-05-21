@@ -2,7 +2,8 @@
 
 This is Windows-only game made by a beginner first year computer science student!
 Any tips, criticisms or suggestions are most welcome.
-Created in DEV-C++.
+
+My code is a mess. It's not the best, it just does the job. I will improve it in the future versions.
 
 For this project, I took a basic idea and tried to add some music, colours and animations to it.
 The window size is fixed which makes it feel less like just a terminal program. It uses pseudo random
